@@ -7,6 +7,13 @@ use ReflectionMethod;
 
 class ReflectionClass extends \ReflectionClass
 {
+    /**
+     * @inheritDoc
+     *
+     * @throws ReflectionException
+     *
+     * @link https://php.net/manual/en/reflectionclass.construct.php
+     */
     public function __construct(object|string $objectOrClass)
     {
         parent::__construct($objectOrClass);
