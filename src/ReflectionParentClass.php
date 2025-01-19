@@ -5,6 +5,11 @@ namespace Reflective\Reflection;
 use ReflectionClass;
 use ReflectionException;
 
+/**
+ * @deprecated  since 3.0
+ * @description Use <code>new ReflectionClass()->getParentClasses()</code>
+ * instead of <code>new ReflectionParentClass()->getParentClasses()</code>
+ */
 class ReflectionParentClass extends ReflectionClass
 {
     public const IS_INSTANCEOF = 2;

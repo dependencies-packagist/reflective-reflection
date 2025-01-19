@@ -18,14 +18,28 @@ composer require reflective/reflection
 
 ## Usage
 
-```php
-use Reflective\Reflection\ReflectionParentClass;
+### Gets an array of methods for current class.
 
-$ref = new ReflectionParentClass(AccountController::class);
+```php
+use Reflective\Reflection\ReflectionClass;
+
+$ref = new ReflectionClass(AccountController::class);
 dd(
-    $ref->getParentsClass(),
-    $ref->getParentsClass(BaseController::class),
-    $ref->getParentsClass(BaseController::class, ReflectionParentClass::IS_INSTANCEOF),
+    $ref->getDeclaredMethods(),
+    $ref->getDeclaredMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED),
+);
+```
+
+### Returns an array of class parents.
+
+```php
+use Reflective\Reflection\ReflectionClass;
+
+$ref = new ReflectionClass(AccountController::class);
+dd(
+    $ref->getParentClasses(),
+    $ref->getParentClasses(BaseController::class),
+    $ref->getParentClasses(BaseController::class, ReflectionClass::IS_INSTANCEOF),
 );
 ```
 
