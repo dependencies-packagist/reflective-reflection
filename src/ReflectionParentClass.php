@@ -8,7 +8,7 @@ use ReflectionException;
 /**
  * @deprecated  since 3.0
  * @description Use <code>new ReflectionClass()->getParentClasses()</code>
- * instead of <code>new ReflectionParentClass()->getParentClasses()</code>
+ * instead of <code>new ReflectionParentClass()->getParentsClass()</code>
  */
 class ReflectionParentClass extends ReflectionClass
 {
