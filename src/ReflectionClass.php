@@ -42,7 +42,7 @@ class ReflectionClass extends \ReflectionClass
      * @param string|null $name
      * @param int         $flags
      *
-     * @return ReflectionClass[]
+     * @return \ReflectionClass[]
      */
     public function getParentClasses(?string $name = null, int $flags = 0): array
     {
