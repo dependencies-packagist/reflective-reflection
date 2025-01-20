@@ -1,6 +1,6 @@
 <?php
 
-namespace Reflective\Reflection;
+namespace Reflective\Reflection\Support;
 
 use Iterator;
 use ReflectionClass;
@@ -36,4 +36,5 @@ class ReflectionParentClassIterator implements Iterator
     {
         return $this->class instanceof ReflectionClass;
     }
+
 }

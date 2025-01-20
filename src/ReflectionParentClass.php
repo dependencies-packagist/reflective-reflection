@@ -3,6 +3,7 @@
 namespace Reflective\Reflection;
 
 use ReflectionClass;
+use Reflective\Reflection\Support\ReflectionParentClassIterator;
 
 class ReflectionParentClass extends ReflectionClass
 {
