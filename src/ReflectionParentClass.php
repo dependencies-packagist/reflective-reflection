@@ -16,7 +16,7 @@ class ReflectionParentClass extends ReflectionClass
      *
      * @return ReflectionClass[]
      */
-    public function getParentsClass(?string $name = null, int $flags = 0): array
+    public function getParentClasses(?string $name = null, int $flags = 0): array
     {
         $parents  = [];
         $iterator = new ReflectionParentClassIterator(new ReflectionClass($this->getName()));

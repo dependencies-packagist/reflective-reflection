@@ -53,7 +53,7 @@ class ReflectionClass extends \ReflectionClass
      */
     public function getParentClasses(?string $name = null, int $flags = 0): array
     {
-        return (new ReflectionParentClass($this->getName()))->getParentsClass($name, $flags);
+        return (new ReflectionParentClass($this->getName()))->getParentClasses($name, $flags);
     }
 
 }
