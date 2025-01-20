@@ -43,6 +43,19 @@ dd(
 );
 ```
 
+> **Note:** `ReflectionParentClass` is a subclass of `\ReflectionClass` and has the same methods.
+
+```php
+use Reflective\Reflection\ReflectionParentClass;
+
+$ref = new ReflectionParentClass(AccountController::class);
+dd(
+    $ref->getParentClasses(),
+    $ref->getParentClasses(BaseController::class),
+    $ref->getParentClasses(BaseController::class, ReflectionParentClass::IS_INSTANCEOF),
+);
+```
+
 ## License
 
 Nacosvel Contracts is made available under the MIT License (MIT). Please see [License File](LICENSE) for more information.
