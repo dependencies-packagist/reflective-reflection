@@ -53,22 +53,7 @@ class ReflectionClass extends \ReflectionClass
      */
     public function getParentClasses(?string $name = null, int $flags = 0): array
     {
-        $parents = [];
-        try {
-            $iterator = new ReflectionParentClassIterator(new \ReflectionClass($this->getName()));
-            while ($iterator->valid()) {
-                $matches = is_null($name)
-                    || ($flags === 0 && $iterator->current()->getName() === $name)
-                    || ($flags === self::IS_INSTANCEOF && (is_subclass_of($iterator->current()->getName(), $name) || $iterator->current()->getName() === $name));
-                if ($matches) {
-                    $parents[$iterator->key()] = $iterator->current();
-                }
-                $iterator->next();
-            }
-        } catch (ReflectionException $e) {
-            //
-        }
-        return $parents;
+        return (new ReflectionParentClass($this->getName()))->getParentsClass($name, $flags);
     }
 
 }
