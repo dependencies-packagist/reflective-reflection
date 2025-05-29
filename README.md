@@ -37,24 +37,26 @@ use Reflective\Reflection\ReflectionClass;
 
 $ref = new ReflectionClass(AccountController::class);
 dd(
-    $ref->getParentClasses(),
-    $ref->getParentClasses(BaseController::class),
-    $ref->getParentClasses(BaseController::class, ReflectionClass::IS_INSTANCEOF),
+    $ref->getDeclaredParentClass(),
+    $ref->getDeclaredParentClass(BaseController::class),
+    $ref->getDeclaredParentClass(BaseController::class, ReflectionClass::IS_INSTANCEOF),
 );
 ```
 
-> **Note:** `ReflectionParentClass` is a subclass of `\ReflectionClass` and has the same methods.
+> **Note:** `Reflective\Reflection\ReflectionClass` is a subclass of `\ReflectionClass` and has the same methods.
 
 ```php
 use Reflective\Reflection\ReflectionParentClass;
 
 $ref = new ReflectionParentClass(AccountController::class);
 dd(
-    $ref->getParentClasses(),
-    $ref->getParentClasses(BaseController::class),
-    $ref->getParentClasses(BaseController::class, ReflectionParentClass::IS_INSTANCEOF),
+    $ref->getDeclaredParentClass(),
+    $ref->getDeclaredParentClass(BaseController::class),
+    $ref->getDeclaredParentClass(BaseController::class, ReflectionParentClass::IS_INSTANCEOF),
 );
 ```
+
+> **Note:** `Reflective\Reflection\ReflectionParentClass` is a subclass of `Reflective\Reflection\ReflectionClass` and has the same methods.
 
 ## License
 
