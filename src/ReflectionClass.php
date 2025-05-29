@@ -10,7 +10,7 @@ class ReflectionClass extends \ReflectionClass
     /**
      * @inheritDoc
      *
-     * @throws ReflectionException
+     * @throws ReflectionException if the class does not exist.
      *
      * @link https://php.net/manual/en/reflectionclass.construct.php
      */
@@ -22,11 +22,12 @@ class ReflectionClass extends \ReflectionClass
     /**
      * Gets an array of methods for current class.
      *
-     * @param $filter
+     * @param int|null $filter Filter the results to include only methods
+     *                         with certain attributes. Defaults to no filtering.
      *
-     * @return ReflectionMethod[]
+     * @return ReflectionMethod[] An array of {@see ReflectionMethod} objects reflecting each method.
      */
-    public function getDeclaredMethods($filter = null): array
+    public function getDeclaredMethods(int $filter = null): array
     {
         return array_filter($this->getMethods($filter), function (ReflectionMethod $method) {
             return $method->getDeclaringClass()->getName() === $this->getName();
@@ -49,11 +50,15 @@ class ReflectionClass extends \ReflectionClass
      * @param string|null $name
      * @param int         $flags
      *
-     * @return \ReflectionClass[]
+     * @return ReflectionClass[]
      */
-    public function getParentClasses(?string $name = null, int $flags = 0): array
+    public function getDeclaredParentClass(?string $name = null, int $flags = 0): array
     {
-        return (new ReflectionParentClass($this->getName()))->getParentClasses($name, $flags);
+        try {
+            return (new ReflectionParentClass($this->getName()))->getDeclaredParentClass($name, $flags);
+        } catch (ReflectionException $e) {
+            return [];
+        }
     }
 
 }

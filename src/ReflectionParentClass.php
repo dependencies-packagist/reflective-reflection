@@ -2,9 +2,6 @@
 
 namespace Reflective\Reflection;
 
-use ReflectionClass;
-use Reflective\Reflection\Support\ReflectionParentClassIterator;
-
 class ReflectionParentClass extends ReflectionClass
 {
     public const IS_INSTANCEOF = 2;
@@ -17,14 +14,14 @@ class ReflectionParentClass extends ReflectionClass
      *
      * @return ReflectionClass[]
      */
-    public function getParentClasses(?string $name = null, int $flags = 0): array
+    public function getDeclaredParentClass(?string $name = null, int $flags = 0): array
     {
         $parents  = [];
-        $iterator = new ReflectionParentClassIterator(new ReflectionClass($this->getName()));
+        $iterator = new ReflectionParentClassIterator($this);
         while ($iterator->valid()) {
             $matches = is_null($name)
                 || ($flags === 0 && $iterator->current()->getName() === $name)
-                || ($flags === self::IS_INSTANCEOF && (is_subclass_of($iterator->current()->getName(), $name) || $iterator->current()->getName() === $name));
+                || ($flags === self::IS_INSTANCEOF && is_a($iterator->current()->getName(), $name, true));
             if ($matches) {
                 $parents[$iterator->key()] = $iterator->current();
             }
