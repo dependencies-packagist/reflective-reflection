@@ -1,5 +1,4 @@
 {
-    "$schema": "https://getcomposer.org/schema.json",
     "name": "reflective/reflection",
     "description": "Reflective is a formally defined reflection mechanism in PHP, which is used to query detailed information about classes, methods, properties, functions, etc.",
     "keywords": [
@@ -26,7 +25,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-main": "2.x-dev"
+            "dev-main": "3.x-dev"
         }
     },
     "minimum-stability": "dev",
